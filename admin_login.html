@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login </title>
+		<style>
+		.login-form {
+			width: 300px;
+			margin: 0 auto;
+			font-family: Tahoma, Geneva, sans-serif;
+		}
+		.login-form h1 {
+			text-align: center;
+			color: #4d4d4d;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+		}
+		.login-form input[type="password"],
+		.login-form input[type="text"] {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color: #535b63;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		body {
+  background-color: coral;
+}
+
+		</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+
+
+<script type="text/javascript">
+       var port_no = window.location.port;
+	var http_url = "http://localhost:" +port_no +"/" ;
+   $(document).ready(function(){
+
+	$("#admin_login").click(function(e){
+	  e.preventDefault();          //browser event stop
+	$.ajax({
+	url: http_url + "admin",   //url set
+	type: "POST",
+	dataType:"json",     // return type json format set
+	data: $("#admin_form").serialize(),      //form data 
+	success: function(data, textStatus, jqXHR){
+                 console.log(data);   
+                 if( data.statusCode == "200")  {
+                    var www = window.location.href ;
+                      window.location = http_url + "admin_dashboard" ;
+                 }                  
+                 else{
+                    $("#user_show").html(data.body.message) ;
+                 } 
+	},
+	error: function(jqXHR, textStatus, errorThrown){
+		alert("error send data" + errorThrown);     //error server
+	}
+	});
+	});
+   });
+</script>
+
+	</head>
+	<body>
+		<h3  align="center" id="user_show"> </h3>
+		<div class="login-form">
+			<h1>Admin  Login</h1>
+			<form action="" method="" id="admin_form" name="admin_form">
+				 User Name:<input type="text" name="username" placeholder="Username" > <br>
+				 Password:<input type="password" name="password" placeholder="Password" ><br>
+				  <input type="button" name="admin_login" id="admin_login" value="Sign In">
+				  <br>
+				</form>
+		</div>
+	</body>

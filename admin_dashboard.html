@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+body {font-family: "Lato", sans-serif;}
+
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 500px) {
+  .sidebar {padding-top: 24px;}
+  .sidebar a {font-size: 20px;}
+}
+</style>
+</head>
+<body>
+     <!---- header container -->
+            <nav class="navbar navbar-default" style="background-color:black ;">
+                <div class="container-fluid">
+                  <div class="navbar-header">
+                    <a style="padding-left: 600px;" class="navbar-brand" id="logout" href="">Logout</a>
+                  </div>
+                </div>
+              </nav>
+        
+
+
+    <!--- slide bar -->
+    <div class="row">
+<div class="sidebar">
+   <a href="" id="dashboard"><i class="fa fa-fw fa-home"></i> Dashboard</a>
+   <a href="" id="user"><i class="fa fa-fw fa-user"></i> User</a>
+   <a href="" id="blog"><i class="fa fa-fw fa-envelope"></i> Blog</a>
+</div>
+</div>
+
+
+<nav class="navbar navbar-dark bg-dark">
+
+  <img src="/blog.png" alt="Girl in a jacket" width="350" height="350">
+</nav>
+
+
+<nav class="navbar navbar-dark bg-dark" style="padding:50px;">
+  <footer>
+      <p> <span style="color:white;"> All rights reserved. </span></p>
+    </footer>
+   </nav>
+
+  <script type="text/javascript">
+    var www = window.location.href ;
+    var path = window.location.pathname;
+    var hostname = window.location.hostname;
+    var port = window.location.port;
+    var protocol = window.location.protocol;
+    var admin_url = "http://localhost:" +port +"/" ;
+
+        document.getElementById("dashboard").href = admin_url + "admin_dashboard" ;
+     document.getElementById("user").href =  admin_url + "admin_user_details" ;
+     document.getElementById("blog").href = admin_url + "admin_blog" ; 
+     document.getElementById("logout").href = admin_url + "admin_logout" ; 
+
+
+   </script>
+     
+</body>
+</html> 

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+
+<style>
+body {font-family: "Lato", sans-serif;}
+
+.sidebar {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 500px) {
+  .sidebar {padding-top: 24px;}
+  .sidebar a {font-size: 20px;}
+}
+.login-form {
+			width: 300px;
+			margin: 0 auto;
+			font-family: Tahoma, Geneva, sans-serif;
+		}
+		.login-form h1 {
+			text-align: center;
+			color: #4d4d4d;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+		}
+		.login-form input[type="password"],
+        .login-form input[type="email"],
+		.login-form input[type="text"] {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color: #535b63;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+		}
+    .paging-nav {
+          text-align: right;
+          padding-top: 2px;
+        }
+        
+        .paging-nav a {
+          margin: auto 1px;
+          text-decoration: none;
+          display: inline-block;
+          padding: 1px 7px;
+          background: #91b9e6;
+          color: white;
+          border-radius: 3px;
+        }
+        
+        .paging-nav .selected-page {
+          background: #187ed5;
+          font-weight: bold;
+        }
+        
+        .paging-nav,
+        #tableData {
+          width: 400px;
+          margin: 0 auto;
+          font-family: Arial, sans-serif;
+        }
+
+
+</style>
+</head>
+<body>
+    
+     <!---- header container -->
+     <nav class="navbar navbar-default" style="background-color:black ;">
+      <div class="container-fluid">
+                  <div class="navbar-header">
+                     <a style="padding-left: 600px;" class="navbar-brand" id="logout" href="">Logout</a>
+                  </div>
+                </div>
+              </nav>
+        
+
+              <div align="center"  style="background-color:black ;">
+                <h3  align="center" id="user_show"> </h3> 
+              <div class="login-form">
+               <h1>Add user</h1>
+   
+       <form action="" id="admin_add_form" name="admin_add_form" method="post">
+           User Name: <input name="username" type="text"  placeholder="Username"/>  <br>
+           Email: <input name="email" type="email" id="email" placeholder="Email"  />  <br>
+           Password: <input name="password" type="password"  placeholder="Password" /> <br>
+           address: <input name="address" type="text"  placeholder="Address" />   <br>
+            <input type="button" id="admin_add_user" name="admin_add_user"  value="Add User"/>
+            <br>
+            <br>
+
+       </form>
+       </div>
+      </div>
+
+                   
+    <!--- slide bar -->
+<div class="sidebar">
+   <a href="" id="dashboard"><i class="fa fa-fw fa-home"></i> Dashboard</a>
+   <!-- <a href="" id="admin"><i class="fa fa-fw fa-user"></i> Admin</a> -->
+   <a href="" id="user"><i class="fa fa-fw fa-user"></i> User</a>
+   <a href="" id="blog"><i class="fa fa-fw fa-envelope"></i> Blog</a>
+</div>
+<nav class="navbar navbar-dark bg-blue" style="padding:50px;">
+<div align="center"  >
+  
+  <h3 align="center"> user  sort list  </h3>
+
+  <div class="login-form">
+    <h1 id="user_sort_msg"> </h1>
+   <form action="" method="" id="admin_user_sort_form" name="admin_user_sort_form">
+        <span style="color:white">User Name: </span> <input type="text" name="username_1" id="username_1" placeholder="Username" > <br>
+        <span style="color:white"> Email: </span> <input type="text" name="email_1"  id="email_1" placeholder="Email" ><br>
+           <br>
+        <input   type="button" name="admin_user_sort" id="admin_user_sort"  style ="background-color: #187ed5;" value="Search">
+        <br>
+        <br>
+       <br>
+   </form>
+</div>
+
+
+
+  <table id="tableData" class="table table-bordered table-striped">
+   <tr>
+   <th scope="col">SNO</th>
+    <th scope="col">USERNAME</th>
+   <th scope="col">PASSWORD</th>
+   <th scope="col">EMAIL</th>
+   <th scope="col">ADDRESS</th>
+
+ </tr>
+</table>
+</div>
+</nav>
+
+    <!--- footer  -->
+    <nav class="navbar navbar-dark bg-dark" style="padding:50px;">
+      <footer>
+          <p> <span style="color:white;"> All rights reserved. </span></p>
+        </footer>
+       </nav>
+
+       <script type="text/javascript">
+        var www = window.location.href ;
+        var path = window.location.pathname;
+        var hostname = window.location.hostname;
+        var port = window.location.port;
+        var protocol = window.location.protocol;
+        var admin_url = "http://localhost:" +port +"/" ;
+    
+           document.getElementById("dashboard").href = admin_url + "admin_dashboard" ;
+          //  document.getElementById("admin").href =  admin_url + "admin_setting" ;
+           document.getElementById("user").href =  admin_url + "admin_user_details" ;
+           document.getElementById("blog").href = admin_url + "admin_blog" ; 
+           document.getElementById("logout").href = admin_url + "admin_logout" ; 
+       </script>  
+       
+
+   <script type="text/javascript">
+  var port_no = window.location.port;
+  var http_url = "http://localhost:" +port_no +"/" ;
+
+ $(document).ready(function(){
+
+  $("#admin_add_user").click(function(e){
+    e.preventDefault();          //browser event stop
+    var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var email = $("#email").val();
+    if (!filter.test(email) && email != '') {
+           $("#user_show").html("Please provide a valid email address") ;
+          //  setTimeout(function(){ $("#user_show").hide(); }, 3000);
+         }
+    else{
+  $.ajax({
+  url: http_url + "admin_user_details",   //url set
+  type: "POST",
+  dataType:"json",     // return type json format set
+  data: $("#admin_add_form").serialize(),      //form data 
+  success: function(data, textStatus, jqXHR){
+               console.log(data);                      //return result value set data  variable 
+                 $("#user_show").html(data.body.message) ;
+  },
+  error: function(jqXHR, textStatus, errorThrown){
+       alert("error send data" + errorThrown);     //error server
+  }
+  });
+}
+  });
+
+
+  $("#admin_user_sort").click(function(e){
+e.preventDefault();          //browser event stop
+$.ajax({
+url: http_url + "admin_user_sort",   //url set
+type: "POST",
+dataType:"json",     // return type json format set
+data: $("#admin_user_sort_form").serialize(),      //form data 
+success: function(data, textStatus, jqXHR){
+  if(data.statusCode == "200")
+         {
+           var  gallery =$("#tableData");
+          gallery.find("td").remove();
+          $(data.result_data).each (function(index,value){
+            var record_1 = "<tr><td>" +(index+1) +"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.email+
+           "</td><td>"+value.address +"</td></tr>" ;
+                      $("table").append(record_1);
+                      $("#tableData").show();
+
+   });  
+ 
+      }
+      else{
+        $("#user_sort_msg").html("records not found") ;
+        $("#tableData").hide();
+      }
+},
+error: function(jqXHR, textStatus, errorThrown){
+ alert("error send data" + errorThrown);     //error server
+}
+});
+
+});
+
+$.ajax({
+url: http_url + "all_user_details",   //url set
+type: "GET",
+dataType:"json",     // return type json format set
+// data: $("#blog_form").serialize(),      //form data 
+success: function(data, textStatus, jqXHR){
+       console.log(data);  
+       console.log(data.length); 
+       if(data.length > 0)   {    
+       $(data).each (function(index,value){
+              
+       var records = "<tr><td>" +(index+1) +"</td><td>"+value.username+"</td><td>"+value.password+"</td><td>"+value.email+
+          "</td><td>"+value.address +"</td></tr>" ;
+            $("table").append(records);
+   }); ;    
+  }
+  else{
+       $("#tableData").hide();
+  }   
+},
+error: function(jqXHR, textStatus, errorThrown){
+alert("error send data" + errorThrown);     //error server
+}
+});
+
+
+ });
+</script>
+
+</body>
+</html> 

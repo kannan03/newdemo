@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Login </title>
+		<style>
+		.login-form {
+			width: 300px;
+			margin: 0 auto;
+			font-family: Tahoma, Geneva, sans-serif;
+		}
+		.login-form h1 {
+			text-align: center;
+			color: #4d4d4d;
+			font-size: 24px;
+			padding: 20px 0 20px 0;
+		}
+		.login-form input[type="password"],
+		.login-form input[type="textarea"],
+
+		.login-form input[type="text"] {
+			width: 100%;
+			padding: 15px;
+			border: 1px solid #dddddd;
+			margin-bottom: 15px;
+			box-sizing:border-box;
+		}
+		.login-form input[type="submit"] {
+			width: 100%;
+			padding: 15px;
+			background-color: #535b63;
+			border: 0;
+			box-sizing: border-box;
+			cursor: pointer;
+			font-weight: bold;
+			color: #ffffff;
+		}
+		body {
+  background-color: coral;
+}
+
+		</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+	</head>
+	<body>
+		<h3  align="center" id="user_show"> </h3>
+
+		<div class="login-form">
+			<h1>User Login </h1>
+			<form action="" method="" id="login_form" name="login_form">
+				 User Name:<input type="text" name="username" placeholder="Username" > <br>
+				 Password:<input type="password" name="password" placeholder="Password" ><br>
+				  <input type="button" name="user_login" id="user_login" value="Sign In">
+				  <br>
+				  <br>
+				  <a href="" id="login_url_id"> D'ont have an account? Sign Up</a>
+				</form>
+		</div>
+
+		<script type="text/javascript">
+			var port_no = window.location.port;
+		   var http_url = "http://localhost:" +port_no +"/" ;
+			document.getElementById("login_url_id").href = http_url + "user_register" ;
+			
+		 $(document).ready(function(){
+		  $("#user_login").click(function(e){
+			e.preventDefault();          //browser event stop
+		  $.ajax({
+		  url: http_url + "login",   //url set
+		  type: "POST",
+		  dataType:"json",     // return type json format set
+		  data: $("#login_form").serialize(),      //form data 
+		  success: function(data, textStatus, jqXHR){
+					   console.log(data);    
+						if(data.statusCode == "200") {
+						 window.location = http_url + "home" ;
+	  
+					   }                 
+					   else{
+						  $("#user_show").html(data.body.message) ;
+	  
+					   } 
+		  },
+		  error: function(jqXHR, textStatus, errorThrown){
+			  alert("error send data" + errorThrown);     //error server
+		  }
+		  });
+		  });
+		 });
+	  </script>
+	  
+	  
+	</body>

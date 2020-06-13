@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>  
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <div class="col-md-8">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="" id="home" >Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item"  >
+          <a class="nav-link" href="" id="add_blog"> Add blog</a>
+        </li>
+      </ul>
+      </div>
+      <div class="col-md-4">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item ">
+              <a class="nav-link" href="" id="view_blog"> View blog </a>
+            </li>
+            <li class="nav-item"  >
+              <a class="nav-link"  id="logout" href="">Logout</a>
+            </li>
+          </ul>
+     </div>
+    </div>
+  </nav>
+
+
+  <nav class="navbar navbar-dark bg-primary">
+
+    <img src="/blog.png" alt="Girl in a jacket" width="650" height="350">
+  </nav>
+
+  
+  <nav class="navbar navbar-dark bg-primary" style="padding:50px;">
+    <footer>
+        <p> All rights reserved.</p>
+      </footer>
+     </nav>
+
+   <script type="text/javascript">
+    var www = window.location.href ;
+    var path = window.location.pathname;
+    var hostname = window.location.hostname;
+    var port = window.location.port;
+    var protocol = window.location.protocol;
+    var user_url = "http://localhost:" +port +"/" ;
+
+document.getElementById("home").href = user_url + "home" ;
+document.getElementById("add_blog").href =  user_url + "user_add_blog" ;
+document.getElementById("view_blog").href =  user_url + "user_view_blog" ;
+document.getElementById("logout").href =  user_url + "user_logout" ;
+
+</script>
+
+   </body>
+  </html>
